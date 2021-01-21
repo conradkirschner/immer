@@ -11,7 +11,6 @@ sidebar_label: Introduction
 <img src="/immer/img/immer-logo.svg" height="200px" align="right"/>
 
 # Immer
-
 Winner of the "Breakthrough of the year" [React open source award](https://osawards.com/react/) and "Most impactful contribution" [JavaScript open source award](https://osawards.com/javascript/) in 2019.
 
 - Introduction blogpost: [Immer: Immutability the easy way](https://medium.com/@mweststrate/introducing-immer-immutability-the-easy-way-9d73d8f71cb3)
@@ -29,8 +28,10 @@ The basic idea is that you will apply all your changes to a temporary _draftStat
 Using Immer is like having a personal assistant; he takes a letter (the current state) and gives you a copy (draft) to jot changes onto. Once you are done, the assistant will take your draft and produce the real immutable, final letter for you (the next state).
 
 ## Quick Example
+We also provide a <a href="">Typescript</a> Version of this documentation.
 
-```javascript
+[//]: # (This was insert by build job. Edit file ./docs/code/introduction-example.ts Then build:docs) 
+```typescript
 import produce from "immer"
 
 const baseState = [
@@ -48,7 +49,9 @@ const nextState = produce(baseState, draftState => {
 	draftState.push({todo: "Tweet about it"})
 	draftState[1].done = true
 })
+
 ```
+
 
 The interesting thing about Immer is that the `baseState` will be untouched, but the `nextState` will be a new immutable tree that reflects all changes made to `draftState` (and structurally sharing the things that weren't changed).
 
@@ -64,3 +67,24 @@ Head to the [next section](produce) to further dive into `produce`.
 - Boilerplate reduction. Less noise, more concise code.
 - First class support for patches
 - Small: 3KB gzipped
+[//]: # (This was insert by build job. Edit file ./docs/code/introduction-example.ts Then build:docs) 
+```typescript
+import produce from "immer"
+
+const baseState = [
+	{
+		todo: "Learn typescript",
+		done: true
+	},
+	{
+		todo: "Try immer",
+		done: false
+	}
+]
+
+const nextState = produce(baseState, draftState => {
+	draftState.push({todo: "Tweet about it"})
+	draftState[1].done = true
+})
+
+```
